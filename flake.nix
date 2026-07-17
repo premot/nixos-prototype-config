@@ -2,7 +2,8 @@
   description = "Disposable legacy-BIOS NixOS prototype";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable"; 
+    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
 
     disko = {
       url = "github:nix-community/disko/v1.12.0";

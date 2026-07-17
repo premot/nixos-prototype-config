@@ -17,9 +17,12 @@
   };
 
   services.xserver.enable = true;
-  services.xserver.displayManager.lightdm.enable = true;
-  services.xserver.desktopManager.xfce.enable = true;
-  services.displayManager.defaultSession = "xfce";
+  # services.xserver.displayManager.lightdm.enable = true;
+  # services.xserver.desktopManager.xfce.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
+  services.xserver.displayManager.gdm.enable = true;
+  # services.displayManager.defaultSession = "xfce";
+  services.displayManager.defaultSession = "gnome";
 
   services.openssh = {
     enable = true;
@@ -40,7 +43,11 @@
 
   environment.systemPackages = with pkgs; [
     git
-    vim
+    nvim
+    nodejs_22
+    # fzf
+    # rg
+    # fd
   ];
 
   nix.settings.experimental-features = [
