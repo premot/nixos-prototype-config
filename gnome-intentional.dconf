@@ -1,0 +1,110 @@
+# Curated from ~/ubuntu-settings/gsettings2.txt (Ubuntu 24.04 / GNOME 46).
+# Import with: dconf load / < gnome-intentional.dconf
+#
+# Excluded: Yaru/Ubuntu appearance, Ubuntu extensions and favorites,
+# app/window history, timestamps, device/network state, file chooser state,
+# GNOME Terminal color profiles, and other application metadata.
+
+# Do not lock or blank the desktop because of inactivity.
+[org/gnome/desktop/screensaver]
+lock-enabled=false
+
+[org/gnome/desktop/session]
+idle-delay=uint32 0
+
+# Do not automatically suspend while connected to AC power.
+[org/gnome/settings-daemon/plugins/power]
+sleep-inactive-ac-type='nothing'
+
+# Disable GNOME's edge/two-column tiling behavior.
+[org/gnome/mutter]
+edge-tiling=false
+
+[org/gnome/mutter/keybindings]
+toggle-tiled-left=@as []
+toggle-tiled-right=@as []
+
+# Alt+1..9 are used by the terminal-profile shortcuts below, so disable
+# GNOME Shell's conflicting application shortcuts.
+[org/gnome/shell/keybindings]
+switch-to-application-1=@as []
+switch-to-application-2=@as []
+switch-to-application-3=@as []
+switch-to-application-4=@as []
+switch-to-application-5=@as []
+switch-to-application-6=@as []
+switch-to-application-7=@as []
+switch-to-application-8=@as []
+switch-to-application-9=@as []
+
+# Intentional custom shortcuts. These commands require foot, htop, neovim,
+# GNOME Terminal, and the corresponding GNOME Terminal profile UUIDs.
+[org/gnome/settings-daemon/plugins/media-keys]
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/foo-h/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/gnome-terminal-palette-1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/gnome-terminal-palette-2/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/gnome-terminal-palette-3/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/gnome-terminal-palette-4/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/gnome-terminal-palette-5/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/gnome-terminal-palette-6/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/gnome-terminal-palette-7/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/gnome-terminal-palette-8/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/gnome-terminal-palette-9/']
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0]
+binding='<Alt>g'
+command='gnome-terminal'
+name='g term'
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1]
+binding='<Alt>f'
+command='foot -F nvim'
+name='foot nvim'
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/foo-h]
+binding='<Alt>h'
+command='footclient -F htop'
+name='foot htop'
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/gnome-terminal-palette-1]
+binding='<Alt>1'
+command='gnome-terminal --profile=be6414ee-9e03-4012-ad40-0e78afd7621c'
+name='Deep Navy Terminal'
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/gnome-terminal-palette-2]
+binding='<Alt>2'
+command='gnome-terminal --profile=1176592f-46e7-4f84-a3ec-bb2a5ef7c14d'
+name='Harbor Teal Terminal'
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/gnome-terminal-palette-3]
+binding='<Alt>3'
+command='gnome-terminal --profile=2118bdf7-2f03-4e21-bf32-c55924117e7d'
+name='Pine Terminal'
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/gnome-terminal-palette-4]
+binding='<Alt>4'
+command='gnome-terminal --profile=bd50ad3a-75cf-41bd-abaf-f3353099a548'
+name='Moss Terminal'
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/gnome-terminal-palette-5]
+binding='<Alt>5'
+command='gnome-terminal --profile=94d869e3-5e3d-47e7-b73f-71deee311584'
+name='Umber Terminal'
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/gnome-terminal-palette-6]
+binding='<Alt>6'
+command='gnome-terminal --profile=4101aa5a-a2a6-4505-96a5-452f33ab0a92'
+name='Oxblood Terminal'
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/gnome-terminal-palette-7]
+binding='<Alt>7'
+command='gnome-terminal --profile=5f5dd616-92b0-46b0-b158-4c01b2ce083f'
+name='Mulberry Terminal'
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/gnome-terminal-palette-8]
+binding='<Alt>8'
+command='gnome-terminal --profile=0940d36f-eace-40e9-bb34-9867ccffb9aa'
+name='Indigo Terminal'
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/gnome-terminal-palette-9]
+binding='<Alt>9'
+command='gnome-terminal --profile=e6c6f0f2-baa7-40ba-ba80-354b9cb605c5'
+name='Slate Terminal'
+
+# Behavioral preferences that are useful independently of Ubuntu styling.
+[org/gnome/desktop/privacy]
+recent-files-max-age=-1
+
+[org/gnome/nautilus/preferences]
+default-folder-viewer='list-view'
