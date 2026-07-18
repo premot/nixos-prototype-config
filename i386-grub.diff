@@ -1,0 +1,55 @@
+diff --git a/configuration.nix b/configuration.nix
+index 924767a..09077b1 100644
+--- a/configuration.nix
++++ b/configuration.nix
+@@ -5,15 +5,10 @@
+     "sd_mod"
+   ];
+ 
+-#  boot.loader.grub = {
+-#    enable = true;
+-#    efiSupport = false;
+-#    # disk.nix supplies the GRUB install device from its BIOS boot partition.
+-#  };
+-
+-  boot.loader = {
+-    systemd-boot.enable = true;
+-    efi.canTouchEfiVariables = true ;
++  boot.loader.grub = {
++    enable = true;
++    efiSupport = false;
++    # disk.nix supplies the GRUB install device from its BIOS boot partition.
+   };
+ 
+   networking = {
+diff --git a/disk.nix b/disk.nix
+index 8cb2121..ddd52e9 100644
+--- a/disk.nix
++++ b/disk.nix
+@@ -2,20 +2,16 @@
+ {
+   disko.devices.disk.main = {
+     type = "disk";
+-    device = "/dev/sdc";
++    device = "/dev/sda";
+     content = {
++      # A GPT BIOS boot partition gives GRUB room for its core image while
++      # retaining compatibility with machines that boot in legacy BIOS mode.
+       type = "gpt";
+       partitions = {
+-esp= {
+-          size = "512M";
+-          type = "EF00";
++        boot = {
++          size = "1M";
++          type = "EF02";
+           priority = 1;
+-          content = {
+-            type = "filesystem";
+-            format = "vfat";
+-            mountpoint = "/boot";
+-mountOptions = [ "umask=0077" ];
+-};
+         };
+         root = {
+           size = "100%";
