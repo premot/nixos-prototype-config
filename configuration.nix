@@ -5,10 +5,15 @@
     "sd_mod"
   ];
 
-  boot.loader.grub = {
-    enable = true;
-    efiSupport = false;
-    # disk.nix supplies the GRUB install device from its BIOS boot partition.
+#  boot.loader.grub = {
+#    enable = true;
+#    efiSupport = false;
+#    # disk.nix supplies the GRUB install device from its BIOS boot partition.
+#  };
+
+  boot.loader = {
+    systemd-boot.enable = true;
+    efi.canTouchEfiVariables = true ;
   };
 
   networking = {
