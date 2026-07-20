@@ -113,6 +113,14 @@ services.pipewire = {
     fd
     python3
 foot
+btop
+htop
+tree
+rofi
+bemenu
+emacs
+chromium
+fish
 
   curl
   virt-manager
