@@ -69,14 +69,26 @@
     gnome-terminal.enable = true;
   };
 
-  # Open two terminal windows when the GNOME session starts. The second one
-  # starts Neovim with this system's configuration already loaded.
-  environment.etc."xdg/autostart/nixos-configuration-terminals.desktop".text = ''
+  # Use separate autostart entries so the Neovim command only belongs to the
+  # second terminal. A command at the end of one multi-window invocation can
+  # otherwise be applied to both windows by GNOME Terminal.
+  environment.etc."xdg/autostart/nixos-configuration-shell.desktop".text = ''
     [Desktop Entry]
     Type=Application
-    Name=NixOS configuration terminals
-    Comment=Open the NixOS configuration directory and editor
-    Exec=gnome-terminal --window --working-directory=/home/prototype/nixos-prototype-config --window --working-directory=/home/prototype/nixos-prototype-config -- nvim configuration.nix
+    Name=NixOS configuration shell
+    Comment=Open a shell in the NixOS configuration directory
+    Exec=gnome-terminal --window --working-directory=/home/prototype/nixos-prototype-config
+    OnlyShowIn=GNOME;
+    X-GNOME-Autostart-enabled=true
+    Terminal=false
+  '';
+
+  environment.etc."xdg/autostart/nixos-configuration-editor.desktop".text = ''
+    [Desktop Entry]
+    Type=Application
+    Name=NixOS configuration editor
+    Comment=Edit the NixOS configuration in Neovim
+    Exec=gnome-terminal --window --working-directory=/home/prototype/nixos-prototype-config -- nvim configuration.nix
     OnlyShowIn=GNOME;
     X-GNOME-Autostart-enabled=true
     Terminal=false
@@ -100,6 +112,7 @@ services.pipewire = {
     ripgrep
     fd
     python3
+foot
 
   curl
   virt-manager
