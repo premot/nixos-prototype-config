@@ -19,8 +19,10 @@
   #    efiSupport = false;
   #    # disk.nix supplies the GRUB install device from its BIOS boot partition.
   #  };
+
   time.timeZone = "Europe/Helsinki";
   hardware.enableRedistributableFirmware = true;
+  virtualisation.libvirtd.enable = true;
 
 
 
@@ -67,6 +69,19 @@
     gnome-terminal.enable = true;
   };
 
+  # Open two terminal windows when the GNOME session starts. The second one
+  # starts Neovim with this system's configuration already loaded.
+  environment.etc."xdg/autostart/nixos-configuration-terminals.desktop".text = ''
+    [Desktop Entry]
+    Type=Application
+    Name=NixOS configuration terminals
+    Comment=Open the NixOS configuration directory and editor
+    Exec=gnome-terminal --window --working-directory=/home/prototype/nixos-prototype-config --window --working-directory=/home/prototype/nixos-prototype-config -- nvim configuration.nix
+    OnlyShowIn=GNOME;
+    X-GNOME-Autostart-enabled=true
+    Terminal=false
+  '';
+
   security.rtkit.enable = true;
 
 services.pipewire = {
@@ -84,6 +99,13 @@ services.pipewire = {
     fzf
     ripgrep
     fd
+    python3
+
+  curl
+  virt-manager
+  virt-viewer
+  libvirt
+  qemu
   ];
 
   nix.settings.experimental-features = [
