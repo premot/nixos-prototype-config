@@ -1,5 +1,14 @@
 { pkgs, ... }:
 {
+# todo clean up and use 
+#{
+#  imports = [
+#    ./hardware-configuration.nix
+#  ];
+#
+#  # ...
+#}
+# instead
   boot.initrd.availableKernelModules = [
     "ahci"
     "sd_mod"
@@ -10,6 +19,10 @@
   #    efiSupport = false;
   #    # disk.nix supplies the GRUB install device from its BIOS boot partition.
   #  };
+  time.timeZone = "Europe/Helsinki";
+  hardware.enableRedistributableFirmware = true;
+
+
 
   boot.loader = {
     systemd-boot.enable = true;
@@ -20,19 +33,6 @@
     hostName = "nixos-prototype";
     networkmanager.enable = true;
   };
-
-  services.xserver.enable = true;
-  # services.xserver.displayManager.lightdm.enable = true;
-  # services.xserver.desktopManager.xfce.enable = true;
-  # services.displayManager.defaultSession = "xfce";
-  services.desktopManager.gnome.enable = true;
-  services.displayManager.gdm.enable = true;
-  services.displayManager.defaultSession = "gnome";
-  services.displayManager.autoLogin = {
-    enable = true;
-    user = "prototype";
-  };
-
 
   services.openssh = {
     enable = true;
@@ -51,6 +51,32 @@
   };
   security.sudo.wheelNeedsPassword = false;
 
+  services.xserver.enable = true;
+  # services.xserver.displayManager.lightdm.enable = true;
+  # services.xserver.desktopManager.xfce.enable = true;
+  # services.displayManager.defaultSession = "xfce";
+  services.desktopManager.gnome.enable = true;
+  services.displayManager.gdm.enable = true;
+  services.displayManager.defaultSession = "gnome";
+  services.displayManager.autoLogin = {
+    enable = true;
+    user = "prototype";
+  };
+
+  programs = {
+    gnome-terminal.enable = true;
+  };
+
+  security.rtkit.enable = true;
+
+services.pipewire = {
+  enable = true;
+  alsa.enable = true;
+  alsa.support32Bit = true;
+  pulse.enable = true;
+};
+
+
   environment.systemPackages = with pkgs; [
     git
     neovim
@@ -58,7 +84,6 @@
     fzf
     ripgrep
     fd
-    gnome-terminal
   ];
 
   nix.settings.experimental-features = [
