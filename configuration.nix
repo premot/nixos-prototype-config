@@ -58,6 +58,7 @@
     fzf
     ripgrep
     fd
+    gnome-terminal
   ];
 
   nix.settings.experimental-features = [
