@@ -9,17 +9,29 @@
       url = "github:nix-community/disko/v1.12.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
-    { nixpkgs, disko, ... }:
+    { nixpkgs, disko, home-manager, ... }:
     {
       nixosConfigurations.prototype = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           disko.nixosModules.disko
+          home-manager.nixosModules.home-manager
           ./disk.nix
           ./configuration.nix
+
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.prototype = import ./home.nix;
+          }
         ];
       };
     };

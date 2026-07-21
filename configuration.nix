@@ -106,17 +106,21 @@ services.pipewire = {
 
   environment.systemPackages = with pkgs; [
     git
+    zoxide
     neovim
     nodejs_22
     fzf
     ripgrep
     fd
     python3
+    uv
+    gh
+    unzip
 foot
 btop
 htop
 tree
-rofi
+wofi
 bemenu
 emacs
 chromium
