@@ -24,7 +24,10 @@ programs.nix-ld.enable = true;
 
 	time.timeZone = "Europe/Helsinki";
 	hardware.enableRedistributableFirmware = true;
-	virtualisation.libvirtd.enable = true;
+	virtualisation = {
+		libvirtd.enable = true;
+		podman.enable = true;
+	};
 
 
 
@@ -135,6 +138,7 @@ programs.nix-ld.enable = true;
 		clang
 		jdk25
 		curl
+		distrobox
 		virt-manager
 		virt-viewer
 		libvirt
