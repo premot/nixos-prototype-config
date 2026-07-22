@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 {
 # todo clean up and use
 #{
@@ -72,6 +72,7 @@
 # Use separate autostart entries so the Neovim command only belongs to the
 # second terminal. A command at the end of one multi-window invocation can
 # otherwise be applied to both windows by GNOME Terminal.
+
 	environment.etc."xdg/autostart/nixos-configuration-shell.desktop".text = ''
 		[Desktop Entry]
 		Type=Application
@@ -103,40 +104,40 @@
 		pulse.enable = true;
 	};
 
-
 	environment.systemPackages = with pkgs; [
+		inputs.evalbar.packages.${pkgs.system}.default
 		git
-			zoxide
-			neovim
-			nodejs_22
-			fzf
-			ripgrep
-			fd
-			python3
-			uv
-			gh
-			unzip
-			foot
-			btop
-			htop
-			tree
-			wofi
-			bemenu
-			emacs
-			chromium
-			fish
-			cargo
-			rustc
-			gcc
-			clang
-			jdk25
-
-			curl
-			virt-manager
-			virt-viewer
-			libvirt
-			qemu
-			];
+		zoxide
+		neovim
+		nodejs_22
+		fzf
+		ripgrep
+		fd
+		python3
+		uv
+		gh
+		unzip
+		foot
+		btop
+		htop
+		tree
+		wofi
+		bemenu
+		emacs
+		chromium
+		tldr
+		fish
+		cargo
+		rustc
+		gcc
+		clang
+		jdk25
+		curl
+		virt-manager
+		virt-viewer
+		libvirt
+		qemu
+		];
 
 	services.keyd = {
 		enable = true;
@@ -147,6 +148,7 @@
 				capslock = "leftcontrol";
 				leftcontrol = "esc";
 				rightcontrol = "esc"; # Remove this line if you want Right Ctrl unchanged.
+					rightalt = "backspace";
 			};
 		};
 	};

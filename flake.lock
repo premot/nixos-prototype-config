@@ -21,6 +21,26 @@
         "type": "github"
       }
     },
+    "evalbar": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1784716296,
+        "narHash": "sha256-OG0fYvdWYsoXF+B9C8mdPWm2w71tzXjRKpu3rsh4kVg=",
+        "owner": "premot",
+        "repo": "evalbar",
+        "rev": "d5dc35615ddd5b7cf8707ea79029912dc4144f21",
+        "type": "github"
+      },
+      "original": {
+        "owner": "premot",
+        "repo": "evalbar",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -60,6 +80,7 @@
     "root": {
       "inputs": {
         "disko": "disko",
+        "evalbar": "evalbar",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs"
       }
