@@ -54,7 +54,7 @@ programs.nix-ld.enable = true;
 		isNormalUser = true;
 		description = "Prototype Administrator";
 		initialPassword = "nixos";
-		extraGroups = [ "wheel" ];
+		extraGroups = [ "wheel" "dialout" ];
 	};
 	security.sudo.wheelNeedsPassword = false;
 
@@ -114,6 +114,11 @@ programs.nix-ld.enable = true;
 		git
 		zoxide
 		neovim
+		avrdude
+		gnumake
+		arduino-cli
+		picocom
+		pkgsCross.avr.buildPackages.gcc
 		nodejs_22
 		fzf
 		ripgrep
