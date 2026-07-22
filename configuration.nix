@@ -1,5 +1,7 @@
 { inputs, pkgs, ... }:
 {
+
+programs.nix-ld.enable = true;
 # todo clean up and use
 #{
 #  imports = [
