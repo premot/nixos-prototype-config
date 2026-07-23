@@ -160,8 +160,9 @@ programs.nix-ld.enable = true;
 				leftcontrol = "esc";
 				rightcontrol = "esc"; # Remove this line if you want Right Ctrl unchanged.
 				rightalt = "backspace";
-				# Print Screen becomes Tab; the grave key always produces tilde.
+				# Print Screen/SysRq becomes Tab; the grave key always produces tilde.
 				print = "tab";
+				sysrq = "tab";
 				grave = "S-grave";
 			};
 		};
