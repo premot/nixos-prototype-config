@@ -159,7 +159,10 @@ programs.nix-ld.enable = true;
 				capslock = "leftcontrol";
 				leftcontrol = "esc";
 				rightcontrol = "esc"; # Remove this line if you want Right Ctrl unchanged.
-					rightalt = "backspace";
+				rightalt = "backspace";
+				# Print Screen becomes Tab; the grave key always produces tilde.
+				print = "tab";
+				grave = "S-grave";
 			};
 		};
 	};
