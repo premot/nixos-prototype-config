@@ -18,6 +18,10 @@
 			url = "github:premot/evalbar";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+		rice = {
+			url = "path:/home/prototype/rice";
+			flake = false;
+		};
 	};
 
 	outputs =

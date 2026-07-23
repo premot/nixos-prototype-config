@@ -1,6 +1,9 @@
-{ ... }:
+{ inputs, ... }:
 {
-	imports = [ ./gnome-keybindings.nix ];
+	imports = [
+		./gnome-keybindings.nix
+		(inputs.rice + "/nix/terminal-palette.nix")
+	];
 
 # Home Manager manages configuration for the existing NixOS user.
 	home = {

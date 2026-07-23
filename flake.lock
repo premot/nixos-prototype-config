@@ -77,12 +77,26 @@
         "type": "github"
       }
     },
+    "rice": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1784796529,
+        "narHash": "sha256-QFriVubi9rUnbGe55an+7/de0pR4VLQ8gUTc5PjMR+E=",
+        "path": "/home/prototype/rice",
+        "type": "path"
+      },
+      "original": {
+        "path": "/home/prototype/rice",
+        "type": "path"
+      }
+    },
     "root": {
       "inputs": {
         "disko": "disko",
         "evalbar": "evalbar",
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "rice": "rice"
       }
     }
   },
