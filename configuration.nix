@@ -39,6 +39,7 @@ let
 	};
 in
 {
+	imports = [ ./keymap.nix ];
 
 programs.nix-ld.enable = true;
 # todo clean up and use
@@ -149,7 +150,8 @@ programs.nix-ld.enable = true;
 	};
 
 	environment.systemPackages = with pkgs; [
-		inputs.evalbar.packages.${pkgs.system}.default
+		# CLI used to inspect physical key names when editing keymap.nix.
+		keyd
 		git
 		zoxide
 		neovim
@@ -192,23 +194,6 @@ programs.nix-ld.enable = true;
 		whisperMic
 		];
 
-	services.keyd = {
-		enable = true;
-
-		keyboards.default = {
-			ids = [ "*" ];
-			settings.main = {
-				capslock = "leftcontrol";
-				leftcontrol = "esc";
-				rightcontrol = "esc"; # Remove this line if you want Right Ctrl unchanged.
-				rightalt = "backspace";
-				# Print Screen/SysRq becomes Tab; the grave key always produces tilde.
-				print = "tab";
-				sysrq = "tab";
-				grave = "S-grave";
-			};
-		};
-	};
 
 	nix.settings.experimental-features = [
 		"nix-command"

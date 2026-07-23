@@ -1,5 +1,7 @@
 { ... }:
 {
+	imports = [ ./gnome-keybindings.nix ];
+
 # Home Manager manages configuration for the existing NixOS user.
 	home = {
 		username = "prototype";
