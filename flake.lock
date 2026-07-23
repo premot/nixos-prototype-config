@@ -80,14 +80,17 @@
     "rice": {
       "flake": false,
       "locked": {
-        "lastModified": 1784796529,
-        "narHash": "sha256-QFriVubi9rUnbGe55an+7/de0pR4VLQ8gUTc5PjMR+E=",
-        "path": "/home/prototype/rice",
-        "type": "path"
+        "lastModified": 1784796527,
+        "narHash": "sha256-Nlnuw0tWYmxzZeGiv72tfN7t/4r54WCEdYQHgphkpKY=",
+        "ref": "refs/heads/main",
+        "rev": "9fd66daa4bc822734a12cfd2898538d32aa1a59d",
+        "revCount": 5,
+        "type": "git",
+        "url": "https://github.com/premot/rice.git"
       },
       "original": {
-        "path": "/home/prototype/rice",
-        "type": "path"
+        "type": "git",
+        "url": "https://github.com/premot/rice.git"
       }
     },
     "root": {

@@ -19,7 +19,7 @@
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 		rice = {
-			url = "path:/home/prototype/rice";
+			url = "git+https://github.com/premot/rice.git";
 			flake = false;
 		};
 	};
